@@ -33,7 +33,8 @@ export GOOGLE_API_KEY="your_api_key"
 Now you're ready to use Better Commit! Simply stage your changes and run:
 
 ```bash
-better_commit
+git add .
+better-commit
 ```
 
 The AI will analyze your changes and generate a commit message for you.
