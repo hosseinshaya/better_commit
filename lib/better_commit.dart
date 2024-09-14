@@ -28,7 +28,7 @@ Future<int?> commit({String? commitMessage}) async {
         Commit message format: emoji + space + [tag.toUpperCase()] + space + commit message'''),
   ]);
   print('🚀 git commit -m "${response.text}"');
-  final exitCode = run('git commit -m "${response.text}"');
+  final exitCode = run('git commit -m "${response.text}"', nothrow: true);
 
   return exitCode;
 }
