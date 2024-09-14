@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+- Update commit generating prompt.
+
 ## 1.3.0
 
 - Add example.
