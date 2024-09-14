@@ -1,16 +1,14 @@
 name: better_commit
-description: A sample command-line application.
+description: A command-line application to generate better commit messages using AI.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/hosseinshaya/better_commit
 
 environment:
   sdk: ^3.5.0
 
-# Add regular dependencies here.
 dependencies:
   dcli: ^6.0.5
   google_generative_ai: ^0.4.6
-  # path: ^1.8.0
 
 dev_dependencies:
   lints: ^4.0.0
