@@ -27,8 +27,8 @@ Future<int?> commit({String? commitMessage}) async {
         ${commitMessage == null ? '' : 'And based on this commit message: $commitMessage'}.
         Commit message format: emoji + space + [tag.toUpperCase()] + space + commit message'''),
   ]);
-  print('🚀 git commit -m "$response"');
-  final exitCode = run('git commit -m "$response"');
+  print('🚀 git commit -m "${response.text}"');
+  final exitCode = run('git commit -m "${response.text}"');
 
   return exitCode;
 }
