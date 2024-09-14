@@ -34,7 +34,7 @@ Now you're ready to use Better Commit! Simply stage your changes and run:
 
 ```bash
 git add .
-better_commit
+better-commit
 ```
 
 The AI will analyze your changes and generate a commit message for you.
@@ -44,7 +44,7 @@ The AI will analyze your changes and generate a commit message for you.
 If you want to provide additional context for the AI, you can use the `--custom` flag:
 
 ```bash
-better_commit --custom
+better-commit --custom
 ```
 
 This will prompt you to enter an optional commit message, which the AI will consider when generating the final commit message.
