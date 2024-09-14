@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   dcli: ^6.0.5
+  google_generative_ai: ^0.4.6
   # path: ^1.8.0
 
 dev_dependencies:
