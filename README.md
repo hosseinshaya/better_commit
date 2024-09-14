@@ -10,8 +10,9 @@ Better Commit is a Dart package that uses AI to generate meaningful commit messa
 
 To install Better Commit globally, run the following command:
 
-bash
+```bash
 dart pub global activate better_commit
+```
 
 ## Getting Started
 
@@ -23,15 +24,17 @@ Using the Google AI Dart SDK requires an API key. Follow the instructions at [ht
 
 Set your API key as an environment variable:
 
-bash
+```bash
 export GOOGLE_API_KEY="your_api_key"
+```
 
 ### 3. Let the Magic Work
 
 Now you're ready to use Better Commit! Simply stage your changes and run:
 
-bash
+```bash
 better_commit
+```
 
 The AI will analyze your changes and generate a commit message for you.
 
@@ -39,8 +42,9 @@ The AI will analyze your changes and generate a commit message for you.
 
 If you want to provide additional context for the AI, you can use the `--custom` flag:
 
-bash
+```bash
 better_commit --custom
+```
 
 This will prompt you to enter an optional commit message, which the AI will consider when generating the final commit message.
 
