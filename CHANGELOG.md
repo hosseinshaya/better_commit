@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- Add example.
+- Add better-commit executable.
+- Add better project description.
+
 ## 1.2.0
 
 - Bug fixes.
