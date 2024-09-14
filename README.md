@@ -7,7 +7,7 @@
 Better Commit is a Dart package that uses AI to generate meaningful commit messages based on your code changes.
 
 
-❌ Before 🫠
+❌ Before 🤮
 ```bash
 git commit -m "update version"
 ```
