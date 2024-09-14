@@ -1,6 +1,6 @@
 # Better Commit
 
-## Write a better commit with AI ✨
+## Let's AI write a Better Commit ✨
 
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
