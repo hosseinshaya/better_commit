@@ -23,8 +23,8 @@ Future<int?> commit({String? commitMessage}) async {
   final response = await model.generateContent([
     Content.text(
         // ignore: leading_newlines_in_multiline_strings
-        '''Write a short emoji commit message based on this changes: $diffOutput.
-        ${commitMessage == null ? '' : 'And based on this commit message: $commitMessage'}.
+        '''Write a short emoji commit message(max 70 characters) based on this changes: \n $diffOutput \n
+        ${commitMessage == null ? '' : 'And based on this commit message: \n $commitMessage \n'}.
         Commit message format: emoji + space + [tag.toUpperCase()] + space + commit message'''),
   ]);
   print('🚀 git commit -m "${response.text?.trim()}"');
