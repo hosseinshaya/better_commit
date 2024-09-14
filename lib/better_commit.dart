@@ -22,7 +22,6 @@ Future<int?> commit({String? commitMessage}) async {
 
   final response = await model.generateContent([
     Content.text(
-        // ignore: leading_newlines_in_multiline_strings
         '''
 You are an AI assistant tasked with generating meaningful Git commit messages based on code changes. The commit messages should adhere to Git best practices and use appropriate Gitmoji to categorize the type of change.
 
@@ -57,12 +56,13 @@ $diffOutput
 If the user provides a custom message, it will be:
 $commitMessage
 
-If the code changes involve backticks (`` ` ``), replace them with single quotes (`'`) to avoid shell parsing errors in Zsh. Alternatively, escape the backticks with a backslash (`\\`).
+The result should be a runable command like this: git commit -m "title" -m "description"
+send the result as a normal string(not code)
 '''),
   ]);
   print('${response.text?.trim()}');
   final exitCode =
-      run('${response.text?.trim()}', runInShell: true);
+      run('${response.text?.trim()}');
 
   return exitCode;
 }
