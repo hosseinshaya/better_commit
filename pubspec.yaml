@@ -1,6 +1,6 @@
 name: better_commit
 description: Let's AI write a Better Commit.
-version: 1.1.0
+version: 1.2.0
 repository: https://github.com/hosseinshaya/better_commit
 
 environment:
@@ -16,4 +16,4 @@ dev_dependencies:
   very_good_analysis: ^6.0.0
 
 executables:
-  better-commit: bin/better_commit.dart
+  better_commit:
