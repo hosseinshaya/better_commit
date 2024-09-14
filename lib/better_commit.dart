@@ -23,13 +23,46 @@ Future<int?> commit({String? commitMessage}) async {
   final response = await model.generateContent([
     Content.text(
         // ignore: leading_newlines_in_multiline_strings
-        '''Write a short emoji commit message(max 70 characters) based on this changes: \n $diffOutput \n
-        ${commitMessage == null ? '' : 'And based on this commit message: \n $commitMessage \n'}.
-        Commit message format: emoji + space + [tag.toUpperCase()] + space + commit message'''),
+        '''
+You are an AI assistant tasked with generating meaningful Git commit messages based on code changes. The commit messages should adhere to Git best practices and use appropriate Gitmoji to categorize the type of change.
+
+### Requirements:
+1. **Emoji**: Start the commit message with a relevant emoji (Gitmoji) that describes the type of change. Use the following examples:
+   - 🎨 For improving code structure or format.
+   - 🐛 For fixing a bug.
+   - ✨ For introducing new features.
+   - 🚀 For deploying changes.
+   - 🔒️ For fixing security issues.
+   - 💄 For UI changes.
+   - ♻️ For refactoring code.
+   - 📝 For adding or updating documentation.
+
+2. **Title**: Write a concise title no longer than 50 characters that briefly explains the code change. It should follow the format: 
+   `[TAG] Short Description`
+
+3. **Description**: Write a detailed description explaining what the change does and why it was made. This should be no longer than 72 characters per line.
+
+4. **Command**: The output should be in the form of a Git command like:
+git commit -m "EMOJI [TAG] Title" -m "Detailed description"
+
+### Example:
+If the changes involve updating the version number in a `pubspec.yaml` file, the commit should look like this:
+git commit -m "🚀 [RELEASE] Update version in pubspec.yaml" -m "Update version from 1.0 to 1.1 in pubspec.yaml and format the file."
+
+When using the custom message feature, incorporate the custom input into the final commit message.
+
+Please generate the appropriate commit message for the following staged code changes:
+$diffOutput
+
+If the user provides a custom message, it will be:
+$commitMessage
+
+If the code changes involve backticks (`` ` ``), replace them with single quotes (`'`) to avoid shell parsing errors in Zsh. Alternatively, escape the backticks with a backslash (`\\`).
+'''),
   ]);
-  print('🚀 git commit -m "${response.text?.trim()}"');
+  print('${response.text?.trim()}');
   final exitCode =
-      run('git commit -m "${response.text?.trim()}"', runInShell: true);
+      run('${response.text?.trim()}', runInShell: true);
 
   return exitCode;
 }
