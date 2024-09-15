@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0
+
+- Ask user to accept commit.
+- Refactor and format codes.
+- Update readme.
+
 ## 1.4.0
 
 - Update commit generating prompt.
