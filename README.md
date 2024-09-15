@@ -92,3 +92,5 @@ If you have any questions, suggestions, or just want to connect, feel free to re
 
 - LinkedIn: [linkedin.com/in/hosseinshaya](https://linkedin.com/in/hosseinshaya)
 - GitHub: [github.com/hosseinshaya](https://github.com/hosseinshaya)
+
+- Banner Designer: [linkedin.com/in/mehdishabani98](https://linkedin.com/in/mehdishabani98)
