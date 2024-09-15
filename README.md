@@ -61,6 +61,7 @@ better-commit --custom
 ```
 
 This will prompt you to enter an optional commit message, which the AI will consider when generating the final commit message.
+Using custom flag, You can provide a simple and short message and ai will complete it.
 
 ## How It Works
 
