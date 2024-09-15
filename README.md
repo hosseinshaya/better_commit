@@ -1,7 +1,6 @@
+# Better Commit
 
 ![Frame 11741](https://github.com/user-attachments/assets/53d933f9-8205-4d52-8ffa-8fb6bf013bc1)
-
-# Better Commit
 
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
