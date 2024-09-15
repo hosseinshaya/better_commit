@@ -61,6 +61,12 @@ send the result as a normal string(not code)
 '''),
   ]);
   print('${response.text?.trim()}');
+  print('✅ Commit generated. Do you want to proceed with this commit? (Y/n)');
+  final userResponse = stdin.readLineSync()?.toLowerCase();
+  if (userResponse != 'y' && userResponse != '') {
+    print('Commit aborted.');
+    return 0;
+  }
   final exitCode =
       run('${response.text?.trim()}');
 
