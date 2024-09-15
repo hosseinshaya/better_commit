@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1
+
+- Update readme.
+
 ## 1.5.0
 
 - Ask user to accept commit.
