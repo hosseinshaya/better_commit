@@ -21,8 +21,7 @@ Future<int?> commit({String? commitMessage}) async {
   final diffOutput = result.stdout.toString();
 
   final response = await model.generateContent([
-    Content.text(
-        '''
+    Content.text('''
 You are an AI assistant tasked with generating meaningful Git commit messages based on code changes. The commit messages should adhere to Git best practices and use appropriate Gitmoji to categorize the type of change.
 
 ### Requirements:
@@ -57,18 +56,22 @@ If the user provides a custom message, it will be:
 $commitMessage
 
 The result should be a runable command like this: git commit -m "title" -m "description"
-send the result as a normal string(not code)
+Very important: send the result as a normal string(not code).
 '''),
   ]);
-  print('${response.text?.trim()}');
-  print('✅ Commit generated. Do you want to proceed with this commit? (Y/n)');
-  final userResponse = stdin.readLineSync()?.toLowerCase();
+  final command =
+      response.text?.trim().replaceAll('```', '').replaceAll('\n', '');
+  print('$command');
+  var userResponse = ask(
+    '✅ Commit generated. Do you want to proceed with this commit? (Y/n)',
+    required: false,
+  );
+  userResponse = userResponse.toLowerCase();
   if (userResponse != 'y' && userResponse != '') {
     print('Commit aborted.');
     return 0;
   }
-  final exitCode =
-      run('${response.text?.trim()}');
+  final exitCode = run(command!);
 
   return exitCode;
 }
