@@ -73,7 +73,7 @@ Very important: send the result as a normal string(not code).
     return 0;
   }
 
-  command!.start(terminal: true);
+  command!.start(progress: Progress.printStdOut());
 
   return 1;
 }
