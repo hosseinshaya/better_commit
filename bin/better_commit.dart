@@ -4,8 +4,8 @@ import 'package:better_commit/better_commit.dart' as better_commit;
 import 'package:dcli/dcli.dart';
 
 void main(List<String> arguments) async {
-  print('🚀 Better Commit');
-  print('🤖 Using Gemini 1.5 Flash model');
+  print(' ');
+  print('🚀 Better Commit 🤖 Using Gemini 1.5 Flash model');
   String? commitMessage;
   if (arguments.contains('--custom')) {
     commitMessage = ask('📝 Enter your commit message (optional):');
