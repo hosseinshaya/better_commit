@@ -76,9 +76,10 @@ Very important: send the result as a normal string(not code).
   if (wantEdit) {
     final tempFile =
         File('${Directory.systemTemp.path}/temp_better_command.txt');
-    await tempFile.writeAsString(command!);
+    await tempFile.writeAsString('''$command''');
     showEditor(tempFile.path);
     command = await tempFile.readAsString();
+    command = command.trim().replaceAll('```', '').replaceAll('\n', '');
     print(command);
     await tempFile.delete();
   }
