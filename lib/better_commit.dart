@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:better_commit/src/spinner.dart';
 import 'package:dcli/dcli.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
@@ -18,6 +19,9 @@ Future<int?> commit({String? commitMessage}) async {
     model: 'gemini-1.5-flash-latest',
     apiKey: apiKey,
   );
+  final spinner = Spinner();
+  await spinner.start();
+
   final result = await Process.run('git', ['diff', '--staged']);
   final diffOutput = result.stdout.toString();
 
@@ -60,6 +64,8 @@ The result should be a runable command like this: git commit -m "title" -m "desc
 Very important: send the result as a normal string(not code).
 '''),
   ]);
+  await spinner.stop();
+
   final command =
       response.text?.trim().replaceAll('```', '').replaceAll('\n', '');
   print('$command');
