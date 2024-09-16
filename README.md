@@ -5,6 +5,7 @@
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 [![Last Commits](https://img.shields.io/github/last-commit/hosseinshaya/better_commit?logo=git&logoColor=white)](https://github.com/hosseinshaya/better_commit/commits/main)
 [![Uploaded By](https://img.shields.io/badge/Uploaded%20by-Hossein%20Shaya-blue)](https://github.com/hosseinshaya)
+[![GitHub stars](https://img.shields.io/github/stars/hosseinshaya/better_commit.svg?style=social&label=Stars)](https://github.com/hosseinshaya/better_commit)
 
 Better Commit is a Dart package that uses AI to generate meaningful commit messages based on your code changes.
 
