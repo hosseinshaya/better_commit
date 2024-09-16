@@ -73,7 +73,7 @@ Very important: send the result as a normal string(not code).
     return 0;
   }
 
-  command!.start(runInShell: true);
+  command!.start(terminal: true);
 
   return 1;
 }
