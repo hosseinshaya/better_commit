@@ -65,15 +65,28 @@ Very important: send the result as a normal string(not code).
   ]);
   await spinner.stop();
 
-  final command =
+  var command =
       response.text?.trim().replaceAll('```', '').replaceAll('\n', '');
   print('$command');
-  var userResponse = ask(
-    '✅ Commit generated. Do you want to proceed with this commit? (Y/n)',
-    required: false,
+  final wantEdit = confirm(
+      '👆 This is the generated commit, Do you want to edit it?',
+      defaultValue: false,);
+
+  if (wantEdit) {
+    final tempFile =
+        File('${Directory.systemTemp.path}/temp_better_command.txt');
+    await tempFile.writeAsString(command!);
+    showEditor(tempFile.path);
+    command = await tempFile.readAsString();
+    print(command);
+    await tempFile.delete();
+  }
+
+  final commitConfirm = confirm(
+    '✅ Commit generated. Do you want to proceed with this commit?',
+    defaultValue: true,
   );
-  userResponse = userResponse.toLowerCase();
-  if (userResponse != 'y' && userResponse != '') {
+  if (!commitConfirm) {
     print('Commit aborted.');
     return 0;
   }
