@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dcli/dcli.dart';
@@ -71,7 +72,8 @@ Very important: send the result as a normal string(not code).
     print('Commit aborted.');
     return 0;
   }
-  final exitCode = run(command!);
 
-  return exitCode;
+  command!.start();
+
+  return 1;
 }
