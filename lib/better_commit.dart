@@ -69,8 +69,9 @@ Very important: send the result as a normal string(not code).
       response.text?.trim().replaceAll('```', '').replaceAll('\n', '');
   print('$command');
   final wantEdit = confirm(
-      '👆 This is the generated commit, Do you want to edit it?',
-      defaultValue: false,);
+    '👆 This is the generated commit, Do you want to edit it?',
+    defaultValue: false,
+  );
 
   if (wantEdit) {
     final tempFile =
