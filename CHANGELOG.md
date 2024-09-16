@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.0
+
+- Show loading.
+- Can edit commit command before run it.
+
 ## 1.5.2
 
 - Update readme.
