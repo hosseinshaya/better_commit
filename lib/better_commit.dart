@@ -19,8 +19,7 @@ Future<int?> commit({String? commitMessage}) async {
     model: 'gemini-1.5-flash-latest',
     apiKey: apiKey,
   );
-  final spinner = Spinner();
-  await spinner.start();
+  final spinner = Spinner()..start();
 
   final result = await Process.run('git', ['diff', '--staged']);
   final diffOutput = result.stdout.toString();

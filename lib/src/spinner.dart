@@ -9,7 +9,7 @@ class Spinner {
   final Completer<void> _stopCompleter = Completer<void>();
   Future<void>? spinnerFuture;
 
-  Future<void> start() {
+  void start() {
     _isSpinning = true;
     var index = 0;
 
@@ -26,7 +26,7 @@ class Spinner {
     });
 
     spinnerFuture = _stopCompleter.future;
-    return _stopCompleter.future;
+    return;
   }
 
   Future<void> stop() async {
