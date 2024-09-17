@@ -46,6 +46,7 @@ export GOOGLE_API_KEY="your_api_key"
 ```
 
 To add this forever you can add it to:
+
 ~/.zshrc or ~/.bashrc
 
 #### For Windows
@@ -55,6 +56,7 @@ set GOOGLE_API_KEY=your_api_key
 ```
 
 To add this forever you can add it to:
+
 Environment Variables in System Properties
 
 ### 3. Let the Magic Work
