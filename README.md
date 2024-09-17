@@ -39,9 +39,22 @@ Using the Google AI Dart SDK requires an API key. Follow the instructions at [ht
 
 Set your API key as an environment variable:
 
+#### For Linux and MacOS
+
 ```bash
 export GOOGLE_API_KEY="your_api_key"
 ```
+
+#### For Windows
+
+```cmd
+set GOOGLE_API_KEY=your_api_key
+```
+
+To add this forever you can add it to:
+
+For Linux and MacOS: ~/.zshrc or ~/.bashrc
+For Windows: Environment Variables in System Properties
 
 ### 3. Let the Magic Work
 
