@@ -32,41 +32,43 @@ Future<int?> commit({String? commitMessage}) async {
 
   final response = await model.generateContent([
     Content.text('''
-You are an AI assistant tasked with generating meaningful Git commit messages based on code changes. The commit messages should adhere to Git best practices and use appropriate Gitmoji to categorize the type of change.
+You are an AI assistant tasked with generating meaningful Git commit messages based on code changes. The commit messages should follow Git best practices and include appropriate Gitmoji.
 
 ### Requirements:
-1. **Emoji**: Start the commit message with a relevant emoji (Gitmoji) that describes the type of change. Use the following examples:
-   - 🎨 For improving code structure or format.
-   - 🐛 For fixing a bug.
-   - ✨ For introducing new features.
-   - 🚀 For deploying changes.
-   - 🔒️ For fixing security issues.
-   - 💄 For UI changes.
-   - ♻️ For refactoring code.
-   - 📝 For adding or updating documentation.
 
-2. **Title**: Write a concise title no longer than 50 characters that briefly explains the code change. It should follow the format: 
-   `[TAG] Short Description`
+1. **Emoji**: Start the commit message with a relevant Gitmoji to describe the type of change.
+   - 🎨 Improving code structure/format.
+   - 🐛 Fixing a bug.
+   - ✨ Introducing new features.
+   - 🚀 Deploying changes.
+   - 🔒️ Fixing security issues.
+   - 💄 UI changes.
+   - ♻️ Refactoring code.
+   - 📝 Documentation updates.
+   
+2. **Title**: Provide a concise title (max 50 characters) that follows the format: `[TAG] Short Description`.
 
-3. **Description**: Write a detailed description explaining what the change does and why it was made. This should be no longer than 72 characters per line.
+3. **Description**: Write a detailed description (max 72 characters per line) explaining what the change does and why it was made.
 
-4. **Command**: The output should be in the form of a Git command like:
-git commit -m "EMOJI [TAG] Title" -m "Detailed description"
+4. **Command Output**: Produce the final Git command in the format: 
+`git commit -m "EMOJI [TAG] Title" -m "Detailed description"`
 
 ### Example:
-If the changes involve updating the version number in a `pubspec.yaml` file, the commit should look like this:
-git commit -m "🚀 [RELEASE] Update version in pubspec.yaml" -m "Update version from 1.0 to 1.1 in pubspec.yaml and format the file."
+If updating the version number in a `pubspec.yaml` file, the commit should be:
+`git commit -m "🚀 [RELEASE] Update version in pubspec.yaml" -m "Update version from 1.0 to 1.1 in pubspec.yaml and format the file"`
 
-When using the custom message feature, incorporate the custom input into the final commit message.
-
-Please generate the appropriate commit message for the following staged code changes:
+### Task:
+1. Diff Output - Generate an appropriate commit message for the following staged code changes:
 $diffOutput
 
-If the user provides a custom message, it will be:
+2. Custom Message - If a custom commit message is provided, integrate it into the final commit:
 $commitMessage
 
-The result should be a runable command like this: git commit -m "title" -m "description"
-Very important: send the result as a normal string(not code).
+### Conditions:
+- **With Custom Message**: Prefer the custom message for title and just fix text and add emoji and tag. also write description based on diff output.
+- **Without Custom Message**: Generate the commit message entirely based on the diff output.
+
+The result should be a runnable Git command string.
 '''),
   ]);
   await spinner.stop();
