@@ -1,6 +1,6 @@
 name: better_commit
 description: Let's AI write a Better Commit. Better Commit is a Dart package that uses AI to generate meaningful commit messages based on your code changes.
-version: 1.6.0
+version: 1.6.1
 repository: https://github.com/hosseinshaya/better_commit
 
 environment:

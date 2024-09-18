@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1
+
+- Show error if have no staged file.
+
 ## 1.6.0
 
 - Show loading.
