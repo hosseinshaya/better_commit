@@ -10,6 +10,12 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 /// message based on the changes.
 /// It then runs the git commit command with the generated message.
 Future<int?> commit({String? commitMessage}) async {
+  final resultDiffNameOnly =
+      await Process.run('git', ['diff', '--staged', '--name-only']);
+  if (resultDiffNameOnly.stdout.toString().trim().isEmpty) {
+    print('🚫 Nothing to commit');
+    return 1;
+  }
   final apiKey = env['GOOGLE_API_KEY'];
   if (apiKey == null) {
     print('GOOGLE_API_KEY is not set');
