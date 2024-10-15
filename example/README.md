@@ -1,16 +1,18 @@
-# example
+# Cookbook
 
-A new Flutter project.
+## Example of better-commit Usage
 
-## Getting Started
+To use better-commit for generating commit messages, follow these steps:
 
-This project is a starting point for a Flutter application.
+1. Install better-commit by running `flutter pub global activate better_commit` in your terminal.
+2. Navigate to your project directory in the terminal.
+3. Run `better_commit` to generate a commit message based on your staged changes.
+4. If you want to add a custom message, run `better_commit --custom`.
 
-A few resources to get you started if this is your first Flutter project:
+Example output:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+better_commit
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This will generate a commit message with a relevant emoji, a concise title, and a detailed description.
