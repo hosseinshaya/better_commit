@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.2
+
+- Change sdk version
+- Update example readme
+
 ## 1.6.1
 
 - Show error if have no staged file.
