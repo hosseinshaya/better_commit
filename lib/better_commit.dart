@@ -9,7 +9,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 /// It uses the Google Generative AI API to generate a commit
 /// message based on the changes.
 /// It then runs the git commit command with the generated message.
-Future<int?> commit({String? commitMessage}) async {
+Future<int?> commit({String? suggestMessage, String? forceMessage}) async {
   final resultDiffNameOnly =
       await Process.run('git', ['diff', '--staged', '--name-only']);
   if (resultDiffNameOnly.stdout.toString().trim().isEmpty) {
@@ -30,8 +30,9 @@ Future<int?> commit({String? commitMessage}) async {
   final result = await Process.run('git', ['diff', '--staged']);
   final diffOutput = result.stdout.toString();
 
-  final response = await model.generateContent([
-    Content.text('''
+  var prompt = '';
+
+  prompt += '''
 You are an AI assistant tasked with generating meaningful Git commit messages based on code changes. The commit messages should adhere to Git best practices and use appropriate Gitmoji to categorize the type of change.
 
 ### Requirements:
@@ -41,9 +42,6 @@ You are an AI assistant tasked with generating meaningful Git commit messages ba
    - ✨ For introducing new features.
    - 🚀 For deploying changes.
    - 🔒️ For fixing security issues.
-   - 💄 For UI changes.
-   - ♻️ For refactoring code.
-   - 📝 For adding or updating documentation.
 
 2. **Title**: Write a concise title no longer than 50 characters that briefly explains the code change. It should follow the format: 
    `[TAG] Short Description`
@@ -53,21 +51,57 @@ You are an AI assistant tasked with generating meaningful Git commit messages ba
 4. **Command**: The output should be in the form of a Git command like:
 git commit -m "EMOJI [TAG] Title" -m "Detailed description"
 
+5. **Force Message**: If you are using the force message feature, the message should be in the form of:
+git commit -m "EMOJI [TAG] Force Message"
+
+Has force message: ${forceMessage != null}
+
+Has suggest message: ${suggestMessage != null}
+
 ### Example:
 If the changes involve updating the version number in a `pubspec.yaml` file, the commit should look like this:
 git commit -m "🚀 [RELEASE] Update version in pubspec.yaml" -m "Update version from 1.0 to 1.1 in pubspec.yaml and format the file."
 
 When using the custom message feature, incorporate the custom input into the final commit message.
 
-Please generate the appropriate commit message for the following staged code changes:
-$diffOutput
-
-If the user provides a custom message, it will be:
-$commitMessage
-
 The result should be a runable command like this: git commit -m "title" -m "description"
 Very important: send the result as a normal string(not code).
-'''),
+
+   ''';
+
+  if (forceMessage == null) {
+    prompt += '''
+
+Please generate the appropriate commit message for the following staged code changes:
+"$diffOutput"
+
+''';
+  }
+
+  if (forceMessage != null) {
+    prompt += '''
+
+Force message is this:
+"$forceMessage".
+
+use it instead of your generated message and do just fix typos and grammer and add tag and emoji based on this message. nothing else.
+
+''';
+  }
+
+  if (suggestMessage != null) {
+    prompt += '''
+
+User's suggested message is this:
+"$suggestMessage"
+
+so generate message based on diff and use this if its good or use it to improve your generated message.
+
+''';
+  }
+
+  final response = await model.generateContent([
+    Content.text(prompt),
   ]);
   await spinner.stop();
 
