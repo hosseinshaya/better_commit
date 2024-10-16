@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.0
+
+- Add force message
+- Change custom flag into suggest message
+
 ## 1.6.2
 
 - Change sdk version
