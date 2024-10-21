@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.1
+
+- Update changelog
+
 ## 1.7.0
 
 - Add force message
