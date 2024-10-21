@@ -72,22 +72,25 @@ The AI will analyze your changes and generate a commit message for you.
 
 ## Custom Commit Messages
 
-If you want to provide additional context for the AI, you can use the `--custom` flag:
+### Suggest a message for AI
+
+If you want to provide additional context for the AI, you can use the `-sm "Your suggested message"`.
+Or use `--suggest-message` flag:
 
 ```bash
-better-commit --custom
+better-commit -sm "You'r suggested message"
+better-commit --suggest-message
 ```
 
-This will prompt you to enter an optional commit message, which the AI will consider when generating the final commit message.
-Using custom flag, You can provide a simple and short message and ai will complete it.
+### Force to use your message (just add tag and emoji)
 
-## How It Works
+If you wan't to FORCE AI to use your commit message, use `-fm "You'r force message"`.
+Or use `--force-message` flag:
 
-Better Commit uses the Gemini 1.5 Flash model to analyze your staged changes and generate a concise, meaningful commit message. It follows the format:
-
-emoji [TAG] commit message
-
-Enjoy writing better commits with AI assistance!
+```bash
+better-commit -fm "You'r force message"
+better-commit --force-message
+```
 
 ## Contributing and Support
 

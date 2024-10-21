@@ -1,18 +1,34 @@
 # Cookbook
 
-## Example of better-commit Usage
+## Usage
 
-To use better-commit for generating commit messages, follow these steps:
-
-1. Install better-commit by running `flutter pub global activate better_commit` in your terminal.
-2. Navigate to your project directory in the terminal.
-3. Run `better_commit` to generate a commit message based on your staged changes.
-4. If you want to add a custom message, run `better_commit --custom`.
-
-Example output:
+Now you're ready to use Better Commit! Simply stage your changes and run:
 
 ```bash
-better_commit
+git add .
+better-commit
 ```
 
-This will generate a commit message with a relevant emoji, a concise title, and a detailed description.
+The AI will analyze your changes and generate a commit message for you.
+
+## Custom Commit Messages
+
+### Suggest a message for AI
+
+If you want to provide additional context for the AI, you can use the `-sm "Your suggested message"`.
+Or use `--suggest-message` flag:
+
+```bash
+better-commit -sm "You'r suggested message"
+better-commit --suggest-message
+```
+
+### Force to use your message (just add tag and emoji)
+
+If you wan't to FORCE AI to use your commit message, use `-fm "You'r force message"`.
+Or use `--force-message` flag:
+
+```bash
+better-commit -fm "You'r force message"
+better-commit --force-message
+```
