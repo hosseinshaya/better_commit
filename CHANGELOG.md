@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.2
+
+- Rename example README.md to example.md
+
 ## 1.7.1
 
 - Update changelog
